@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Park for Affordable Housing</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans:300,400" rel="stylesheet">
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+
+</head>
+
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Intro</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#slides">Presentation</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#d3ref">D3 Reference</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Project Introduction</h3>
+                    <div class="col-lg-4">
+                        <h4>Subject of Study</h4>
+                        <p>This project examines whether public housing developments in Philadelphia are located close to disirable public amenities compared to regular housing developments. We specifically study public green spaces since they are closely related with quality of life and land values<sup><a target="_blank" href="http://dx.doi.org/10.1016/j.habitatint.2017.03.010">[1]</a></sup>.</p>
+                        <!--
+                        <h4>How accessible are parks from affordable housing developments?</h4>
+                        <h4>Are the parks in good quality?</h4>
+                        <h4>How do the residents feel about them?</h4>
+                        -->
+                    </div>
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <h4>Data and Method</h4>
+                        <p>We explore the usage of social media data to measure activity level and perception of public green spaces instead of traditional network or gravity accessibility measurements. The count of Twitter and Instagram data at each public green space is used to measure its activity level, and the emojis contained in these posts are used to measure the public's perception and attitudes towards each park<sup><a target="_blank" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144296">[2]</a></sup>.</p>
+                    </div>
+
+                    <h3>Team</h3>
+                    <p>Haijing Liu, <i>MCP '18</i></p>
+                    <p>Xinhui Li, <i>MCP '18</i></p>
+                    <p>Course project of <a target="_blank" href="https://dusp.mit.edu/subject/spring-2017-11s943-0">MIT 11.s943 Spring 2017</a>.</p>
+                    <!--
+                    <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
+                    -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="slides" class="slides-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="d3ref" class="d3ref-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form>
+                      <label><input type="radio" name="mode" value="size"> Size</label>
+                      <label><input type="radio" name="mode" value="count" checked> Count</label>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/scrolling-nav.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="js/sunburst.js"></script>
+
+</body>
+
+</html>
