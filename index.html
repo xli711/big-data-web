@@ -11,7 +11,8 @@
     
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans:300,400" rel="stylesheet">
     <link href="css/scrolling-nav.css" rel="stylesheet">
-
+    <link href="css/slideshow.css" rel="stylesheet">
+ 
 </head>
 
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
@@ -29,13 +30,15 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">Intro</a>
+                <a class="navbar-brand page-scroll" href="#slides">Presentation</a>
+                <a class="navbar-brand page-scroll" href="#d3ref">D3 Reference</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <!--div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
+                    <!--li class="hidden">
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
@@ -56,31 +59,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3>Project Introduction</h3>
+                    <h3>Park for Affordable Housing</h3>
                     <br>
-                    <div class="col-lg-4">
-                        <img class="image" src="assets/logo-01.jpg" alt="logo">
-                        <h4>Subject of Study</h4>
-                        <p>This project examines whether public housing developments in the City of Philadelphia are located close to desirable public amenities compared to regular housing developments. We specifically study public green spaces since they are proved to be closely related with quality of life and land values<sup><a target="_blank" href="http://dx.doi.org/10.1016/j.habitatint.2017.03.010">[1]</a></sup>.</p>
+                    <img class="image" src="img/logo-01.jpg" alt="logo" style="align-items: middle;">
+                    <h4>Subject of Study</h4>
+                    <p>This project examines whether public housing developments in the City of Philadelphia are located close to desirable public amenities compared to regular housing developments. We specifically study public green spaces since they are proved to be closely related with quality of life and land values<sup><a target="_blank" href="http://dx.doi.org/10.1016/j.habitatint.2017.03.010">[1]</a></sup>.</p>
+                    <br>
                         <!--
                         <h4>How accessible are parks from affordable housing developments?</h4>
                         <h4>Are the parks in good quality?</h4>
                         <h4>How do the residents feel about them?</h4>
                         -->
-                    </div>
                     
-                    <div class="col-lg-4">
-                        <img class="image" src="assets/logo-02.jpg" alt="logo">
-                        <h4>Data and Method</h4>
-                        <p>We explore the usage of social media data to measure activity level and perception of public green spaces, instead of the more objective and traditional network or gravity accessibility measurements. The count of Twitter and Instagram data at each public green space is used to measure its activity level, and the emojis contained in these posts are used to measure the public's perception and attitudes towards each park<sup><a target="_blank" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144296">[2]</a></sup>.</p>
-                    </div>
-                    <div class="col-lg-4">
-                    <img class="image" src="assets/logo-03.jpg" alt="logo">
+                    <h4>Data and Method</h4>
+                    <p>We explore the usage of social media data to measure activity level and perception of public green spaces, instead of the more objective and traditional network or gravity accessibility measurements. The count of Twitter and Instagram data at each public green space is used to measure its activity level, and the emojis contained in these posts are used to measure the public's perception and attitudes towards each park<sup><a target="_blank" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144296">[2]</a></sup>.</p>
+                    <br>
+                
                     <h4>Team</h4>
-                    <p>Haijing Liu, <i>MCP '18</i></p>
-                    <p>Xinhui Li, <i>MCP '18</i></p>
-                    <p>Course project of <a target="_blank" href="https://dusp.mit.edu/subject/spring-2017-11s943-0">MIT 11.s943 Spring 2017</a>.</p>
-                    </div>
+                    <p style="text-align: center;">Haijing Liu, <i>MCP '18</i></p>
+                    <p style="text-align: center;">Xinhui Li, <i>MCP '18</i></p>
+                    <p style="text-align: center;">Course project of <a target="_blank" href="https://dusp.mit.edu/subject/spring-2017-11s943-0">MIT 11.s943 Spring 2017</a>.</p>
+                    
                     <!--
                     <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
                     -->
@@ -90,13 +89,85 @@
     </section>
 
     <section id="slides" class="slides-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    
-                </div>
+        <div class="slideshow-container">
+            <div class="mySlides">
+                <div class="numbertext">1 / 17</div>
+                    <img src="img/w.jpg" style="width:100%">
             </div>
-        </div>
+
+            <div class="mySlides">
+                <div class="numbertext">2 / 17</div>
+                <img src="img/w2.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">3 / 17</div>
+                <img src="img/w3.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">4 / 17</div>
+                <img src="img/w4.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">5 / 17</div>
+                <img src="img/w5.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">6 / 17</div>
+                <img src="img/w6.jpg" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">7 / 17</div>
+                <img src="img/w7.jpg" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">8 / 17</div>
+                <img src="img/w8.jpg" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">9 / 17</div>
+                <img src="img/w9.jpg" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">10 / 17</div>
+                <img src="img/w10.jpg" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">11 / 17</div>
+                <img src="img/w11.jpg" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">12 / 17</div>
+                <img src="img/w12.jpg" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">13 / 17</div>
+                <img src="img/w13.jpg" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">14 / 17</div>
+                <img src="img/w14.jpg" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">15 / 17</div>
+                <img src="img/w15.jpg" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">16 / 17</div>
+                <img src="img/w16.jpg" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">17 / 17</div>
+                <img src="img/w17.jpg" style="width:100%">
+            </div>
+
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
     </section>
 
     <section id="d3ref" class="d3ref-section">
@@ -119,6 +190,7 @@
     <script src="js/scrolling-nav.js"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="js/sunburst.js"></script>
+    <script src="js/slideshow.js"></script>
 
 </body>
 
