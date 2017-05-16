@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Parks for Affordable Housing</title>
+    <title>Social Philly</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans:300,400" rel="stylesheet">
     <link href="css/scrolling-nav.css" rel="stylesheet">
     <link href="css/slideshow.css" rel="stylesheet">
+    <link href="css/map1.css" rel="stylesheet">
  
 </head>
 
@@ -30,8 +31,10 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">Intro</a>
-                <a class="navbar-brand page-scroll" href="#slides">Presentation</a>
-                <a class="navbar-brand page-scroll" href="#d3ref">D3 Reference</a>
+                <a class="navbar-brand page-scroll" href="#data">Data and Methodology</a>
+                <a class="navbar-brand page-scroll" href="#map">Maps</a>
+            </div>
+                <a class="navbar-brand page-scroll" href="#lihtc">LIHTC</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -59,26 +62,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3>Parks for Affordable Housing</h3>
+                    <h3>Measuring Affordable Housing Livability Using Social Media</h3>
                     <br>
-                    <img class="image" src="img/logo-01.jpg" alt="logo" style="align-items: middle;">
                     <h4>Subject of Study</h4>
-                    <p>This project examines whether public housing developments in the City of Philadelphia are located close to desirable public amenities compared to regular housing developments. We specifically study public green spaces since they are proved to be closely related with quality of life and land values<sup><a target="_blank" href="http://dx.doi.org/10.1016/j.habitatint.2017.03.010">[1]</a></sup>.</p>
+                    <p>This project aims to use Twitter to evaluate the living quality of low-income housing tax credit (LIHTC) program receivers. The density level of tweets is evaluated to measure the activity level of different neighborhoods. Besides activity level, we also want to extract the emojis in each tweet to have a general understanding of people's emotional tendency across the city. The measurement of sentiment score for each emoji is based on an emoji library constructed in the paper "Sentiment of Emojis."<sup><a target="_blank" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144296">[1]</a></sup>. From the analysis, we can identify several active neighborhoods in the city of Philadelphia, a sentiment heat map for the city, and also an evaluation of the LIHTC developments across the city.</p>
                     <br>
-                        <!--
-                        <h4>How accessible are parks from affordable housing developments?</h4>
-                        <h4>Are the parks in good quality?</h4>
-                        <h4>How do the residents feel about them?</h4>
-                        -->
                     
                     <h4>Data and Method</h4>
-                    <p>We explore the usage of social media data to measure activity level and perception of public green spaces, instead of the more objective and traditional network or gravity accessibility measurements. The count of Twitter and Instagram data at each public green space is used to measure its activity level, and the emojis contained in these posts are used to measure the public's perception and attitudes towards each park<sup><a target="_blank" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144296">[2]</a></sup>.</p>
+                    <p>There are over 20,300 tweets scraped in a one-week period in the city of Philadelphia, using a 500mX500m grid. We conducted the data analysis with cross reference to the LIHTC data set, ACS 2015 and land use parcel data set from open data resource.</p>
                     <br>
+                                     
                 
                     <h4>Team</h4>
                     <p style="text-align: center;">Haijing Liu, <i>MCP '18</i></p>
                     <p style="text-align: center;">Xinhui Li, <i>MCP '18</i></p>
                     <p style="text-align: center;">Course project of <a target="_blank" href="https://dusp.mit.edu/subject/spring-2017-11s943-0">MIT 11.s943 Spring 2017</a>.</p>
+
                     
                     <!--
                     <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
@@ -88,7 +87,38 @@
         </div>
     </section>
 
-    <section id="slides" class="slides-section">
+    <section id="map1" class="map1-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                <h4>Tweet Activity and Sentiment across Landuse Types</h4>
+                <br>   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="map2" class="map2-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                <h4>LIHTC Tweet Activity and Sentiment Level Compared to Normal Housing Developments</h4>
+                <br>      
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="//d3js.org/d3.v4.min.js"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
+    <script src="https://d3js.org/d3-array.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="js/map1.js"></script>
+    <script src="js/map2.js"></script>
+    
+
+    <!-- <section id="slides" class="slides-section">
         <div class="slideshow-container">
             <div class="mySlides">
                 <div class="numbertext">1 / 17</div>
@@ -168,9 +198,9 @@
   <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
 <br>
-    </section>
+    </section> -->
 
-    <section id="d3ref" class="d3ref-section">
+<!--     <section id="d3ref" class="d3ref-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -184,13 +214,13 @@
     </section>
 
 
-    <script src="js/jquery.js"></script>
+<!--     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/scrolling-nav.js"></script>
-    <script src="https://d3js.org/d3.v3.min.js"></script>
-    <script src="js/sunburst.js"></script>
-    <script src="js/slideshow.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script> -->
+   <!--  <script src="js/sunburst.js"></script>
+    <script src="js/slideshow.js"></script> --> -->
 
 </body>
 

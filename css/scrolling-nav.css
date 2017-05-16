@@ -90,6 +90,19 @@ of those sections to manage the look and feel of the site. */
     text-align: center;
 }
 
+.map1-section {
+    height: 100%;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.map2-section {
+    height: 100%;
+    padding-top: 50px;
+    text-align: center;
+}
+
+
 .d3ref-section {
     height: 100%;
     padding-top: 150px;
