@@ -3,9 +3,9 @@ var margin = {top: 50, right: 20, bottom: 40, left: 40},
     height = 337.5,
     gap=10;
 
-var c="#D92525";
-var cr="#F25C05"
-var r="#F29F05"
+var c="#FF5850";
+var cr="#FCB040"
+var r="#D2D945"
 
 //svg1
 var width1 = 100
@@ -75,12 +75,12 @@ d3.csv("data/landuse.csv",type, function(error,data){
 
   
     // https://github.com/wbkd/d3-extended
-    d3.selection.prototype.moveToFront = function() {  
+    d3.selection.prototype.moveToFront2 = function() {  
       return this.each(function(){
         this.parentNode.appendChild(this);
       });
     };
-    d3.selection.prototype.moveToBack = function() {  
+    d3.selection.prototype.moveToBack2 = function() {  
         return this.each(function() { 
             var firstChild = this.parentNode.firstChild; 
             if (firstChild) { 
@@ -116,14 +116,14 @@ d3.csv("data/landuse.csv",type, function(error,data){
      // var active   = c_density.active ? false : true,
      //   newOpacity = active ? 0 : 1;
      // Hide or show the elements
-    d3.select("#c_density").moveToFront();
-    d3.select("#district-borders").moveToFront();
+    d3.select("#c_density").moveToFront2();
+    d3.select("#district-borders").moveToFront2();
     // d3.select("#c_density").moveToBack();
     // Update whether or not the elements are active
     // c_density.active = active;
   })
       .on("mouseout", function(d){
-        d3.select("#c_density").moveToBack();
+        d3.select("#c_density").moveToBack2();
       });
 
   svg1.append("text")
@@ -141,11 +141,11 @@ d3.csv("data/landuse.csv",type, function(error,data){
     .attr("y",20)
     .attr("height",204)
     .on("mouseover",function(d){
-        d3.select("#cr_density").moveToFront();
-        d3.select("#district-borders").moveToFront();
+        d3.select("#cr_density").moveToFront2();
+        d3.select("#district-borders").moveToFront2();
       })
       .on("mouseout",function(d){
-        d3.select("#cr_density").moveToBack();
+        d3.select("#cr_density").moveToBack2();
       });
 
     svg1.append("text")
@@ -163,11 +163,11 @@ d3.csv("data/landuse.csv",type, function(error,data){
     .attr("y",203.2)
     .attr("height",20.8)
     .on("mouseover",function(d){
-        d3.select("#r_density").moveToFront();
-        d3.select("#district-borders").moveToFront();
+        d3.select("#r_density").moveToFront2();
+        d3.select("#district-borders").moveToFront2();
       })
       .on("mouseout",function(d){
-        d3.select("#r_density").moveToBack();
+        d3.select("#r_density").moveToBack2();
       });
 
     svg1.append("text")
@@ -185,11 +185,11 @@ d3.csv("data/landuse.csv",type, function(error,data){
       .attr("y",272.2)
       .attr("height",132.8)
       .on("mouseover",function(d){
-        d3.select("#c_emoji").moveToFront();
-        d3.select("#district-borders").moveToFront();
+        d3.select("#c_emoji").moveToFront2();
+        d3.select("#district-borders").moveToFront2();
       })
       .on("mouseout",function(d){
-        d3.select("#c_emoji").moveToBack();
+        d3.select("#c_emoji").moveToBack2();
       });
 
     svg1.append("text")
@@ -207,11 +207,11 @@ d3.csv("data/landuse.csv",type, function(error,data){
     .attr("y",278.8)
     .attr("height",126.2)
     .on("mouseover",function(d){
-        d3.select("#cr_emoji").moveToFront();
-        d3.select("#district-borders").moveToFront();
+        d3.select("#cr_emoji").moveToFront2();
+        d3.select("#district-borders").moveToFront2();
       })
       .on("mouseout",function(d){
-        d3.select("#cr_emoji").moveToBack();
+        d3.select("#cr_emoji").moveToBack2();
       });
 
       svg1.append("text")
@@ -229,11 +229,11 @@ d3.csv("data/landuse.csv",type, function(error,data){
     .attr("y",291.7)
     .attr("height",113.3)
     .on("mouseover",function(d){
-        d3.select("#r_emoji").moveToFront();
-        d3.select("#district-borders").moveToFront();
+        d3.select("#r_emoji").moveToFront2();
+        d3.selectAll("#district-borders").moveToFront2();
       })
       .on("mouseout",function(d){
-        d3.select("#r_emoji").moveToBack();
+        d3.select("#r_emoji").moveToBack2();
       });
 
       svg1.append("text")

@@ -3,8 +3,8 @@ var xmargin = {top: 50, right: 20, bottom: 40, left: 40},
     xheight = 337.5,
     xgap=10;
 
-var xr="#F29F05"
-var lihtc="#0E3D59"
+var xr="#D2D945"
+var lihtc="#C10250"
 
 //xsvg1
 var xwidth1 = 100
@@ -78,14 +78,14 @@ var barxwidth=10;
      // var active   = c_density.active ? false : true,
      //   newOpacity = active ? 0 : 1;
      // Hide or show the elements
-    d3.select("#r_density").moveToFront();
+    d3.select("#xr_density").moveToFront();
     d3.select("#district-borders").moveToFront();
     // d3.select("#c_density").moveToBack();
     // Update whether or not the elements are active
     // c_density.active = active;
   })
       .on("mouseout", function(d){
-        d3.select("#r_density").moveToBack();
+        d3.select("#xr_density").moveToBack();
       });
 
   xsvg1.append("text")
@@ -126,11 +126,11 @@ var barxwidth=10;
       .attr("y",272.2)
       .attr("height",132.8)
       .on("mouseover",function(d){
-        d3.select("#r_emoji").moveToFront();
+        d3.select("#xr_emoji").moveToFront();
         d3.select("#district-borders").moveToFront();
       })
       .on("mouseout",function(d){
-        d3.select("#r_emoji").moveToBack();
+        d3.select("#xr_emoji").moveToBack();
       });
 
     xsvg1.append("text")
@@ -309,7 +309,7 @@ d3.queue()
 
   xg2.append("g")
       .attr("class", "map")
-      .attr("id","r_density")
+      .attr("id","xr_density")
     .selectAll("path")
       .data(r_lihtc.features)
     .enter().append("path")
@@ -318,7 +318,7 @@ d3.queue()
 
   xg2.append("g")
       .attr("class", "map")
-      .attr("id","r_emoji")
+      .attr("id","xr_emoji")
     .selectAll("path")
       .data(r_lihtc.features)
     .enter().append("path")
