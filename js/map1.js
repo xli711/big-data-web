@@ -91,14 +91,14 @@ d3.csv("data/landuse.csv",type, function(error,data){
 
   svg1.append("text")
       .attr("class","title")
-      .text("Activity Level")
-      .attr("x",x1+5)
+      .text("Activity Level (tweets/acre)")
+      .attr("x",5)
       .attr("y",242);
 
     svg1.append("text")
       .attr("class","title")
-      .text("Sentiment Level")
-      .attr("x",x1)
+      .text("Sentiment Level (0-1)")
+      .attr("x",30)
       .attr("y",425);
 
 
@@ -346,11 +346,11 @@ d3.queue()
 
         var mapcolors4 = d3.scaleThreshold()
             .domain([0.01,0.039,0.072,0.1036,0.79])
-            .range(d3.schemePuRd[5]);
+            .range(d3.schemeGreens[5]);
 
         var mapcolors5 = d3.scaleThreshold()
             .domain([0,0.26,0.389,0.4668,0.678])
-            .range(d3.schemePuRd[5]);
+            .range(d3.schemeGreens[5]);
 
   var y3=415;
 

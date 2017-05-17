@@ -9,8 +9,8 @@ var lihtc="#C10250"
 //xsvg1
 var xwidth1 = 100
 
-var xxx1=72.5,
-    xx2=107.5,
+var xxx1=50,
+    xx2=85,
     xy1=400,
     xy2=450;
 
@@ -53,14 +53,14 @@ var barxwidth=10;
 
   xsvg1.append("text")
       .attr("class","title")
-      .text("Activity Level")
-      .attr("x",xxx1+5)
+      .text("Activity Level (tweets/acre)")
+      .attr("x",5)
       .attr("y",242);
 
     xsvg1.append("text")
       .attr("class","title")
-      .text("Sentiment Level")
-      .attr("x",xxx1)
+      .text("Sentiment Level (0-1)")
+      .attr("x",20)
       .attr("y",425);
 
 
@@ -249,26 +249,26 @@ d3.queue()
         
         var mapcolors = d3.scaleThreshold()
             .domain([0,0.22,1.11,3.54,5.65])
-            .range(d3.schemePuRd[5]);
+            .range(d3.schemeGreens[5]);
 
         var mapcolors1 = d3.scaleThreshold()
             .domain([0,0.26,0.39,0.47,0.68])
-            .range(d3.schemePuRd[5]);
+            .range(d3.schemeGreens[5]);
 
         var mapcolors2 = d3.scaleThreshold()
             .domain([0,3.58,8.34,13.90,59.2])
-            .range(d3.schemeBlues[5]);
+            .range(d3.schemePuRd[5]);
 
         var mapcolors3 = d3.scaleThreshold()
             .domain([0,0.28,0.366,0.4635,0.61])
-            .range(d3.schemeBlues[5]);
+            .range(d3.schemePuRd[5]);
 
   var y3=415;
 
   xsvg2.append("g")
       .append("rect")
       .attr("fill",xr)
-      .attr("x",50)
+      .attr("x",100)
       .attr("y",y3)
       .attr("width",20)
       .attr("height",10);
@@ -276,7 +276,7 @@ d3.queue()
   xsvg2.append("g")
       .append("rect")
       .attr("fill",lihtc)
-      .attr("x",200)
+      .attr("x",300)
       .attr("y",y3)
       .attr("width",20)
       .attr("height",10);
@@ -284,14 +284,14 @@ d3.queue()
 
   xsvg2.append("text")
       .attr("class","lable")
-      .text("Residential")
-      .attr("x",75)
+      .text("Residential Developments")
+      .attr("x",125)
       .attr("y",y3+10);
 
   xsvg2.append("text")
       .attr("class","lable")
-      .text("LIHTC")
-      .attr("x",225)
+      .text("LIHTC Developments")
+      .attr("x",325)
       .attr("y",y3+10);
 
   xg2.append("g")
