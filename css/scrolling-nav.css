@@ -34,14 +34,14 @@ html {
     .top-nav-collapse {
         padding: 0px 0;
         background: white;
-        border-color: #187D7B;
+        border-color: #03BCC0;
     }
 }
 .navbar-default .navbar-collapse, .navbar-default .navbar-form{
-    border-color: #187D7B;
+    border-color: #03BCC0;
 }
 .navbar-default .navbar-nav>li>a {
-    color: #187D7B;
+    color: #03BCC0;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
@@ -50,7 +50,7 @@ html {
 }
 
 .navbar-default .navbar-brand {
-    color: #187D7B;
+    color: #03BCC0;
     font-size: 1em;
     font-weight: bold;
 }
@@ -80,7 +80,7 @@ of those sections to manage the look and feel of the site. */
     text-align: left;
 }
 .intro-section a{
-    color: #187D7B;
+    color: #03BCC0;
 }
 
 
@@ -90,10 +90,22 @@ of those sections to manage the look and feel of the site. */
     text-align: center;
 }
 
-.d3ref-section {
+.map1-section {
     height: 100%;
-    padding-top: 150px;
+    padding-top: 50px;
     text-align: center;
+}
+
+.map2-section {
+    height: 100%;
+    padding-top: 0px;
+    text-align: center;
+}
+
+
+.map-section {
+    height: 100%;
+    padding-top: 100px;
     background: #fff;
 }
 
