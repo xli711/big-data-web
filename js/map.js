@@ -63,7 +63,7 @@ map.on('load', function () {
                 // ]
             },
 
-            'circle-color': 'rgba(237, 23, 176, 1)',
+            'circle-color': 'rgba(237, 23, 176, 0.6)',
             // {
             //     property: 'MEAN_tw_de',
             //     type: 'exponential',
@@ -76,9 +76,41 @@ map.on('load', function () {
             //         [0.57, '#91bfdb'],
             //         [0.74, '#4575b4']
             //     ]
-            // },
-            'circle-opacity': 0.6
+            // }
         }
+    });
+
+    map.addLayer({
+        'id': 'lihtc-highlight',
+        'type': 'circle',
+        'source': 'lihtc',
+        'layout': {
+        },
+        'paint': {
+            'circle-radius': {
+                'base': 0.8,
+                'stops': [[12, 5], [22, 40]]
+            },
+            'circle-color': 'rgba(237, 23, 176, 1)',
+        },
+        "filter": ["==", "OBJECTID", 5000]
+    });
+
+    map.addLayer({
+        'id': 'lihtc-fade',
+        'type': 'circle',
+        'source': 'lihtc',
+        'layout': {
+            "visibility": "none"
+        },
+        'paint': {
+            'circle-radius': {
+                'base': 0.8,
+                'stops': [[12, 2], [22, 30]]
+            },
+            'circle-color': 'rgba(237, 23, 176, 0.2)',
+        },
+        "filter": ["!=", "PROJECT", ""]
     });
 
     map.addSource('tweets', {
@@ -237,6 +269,16 @@ $("#nav-button-left").on('click', function(){
     changeStep();
 });
 
+//make the navigation dots clickable
+for (var idx in nav){
+    $('#'+nav[idx].num.toString()).parent().on('click', function(){
+        //console.log(this.children[0].id);
+        navNum = parseInt(this.children[0].id);
+        updateNav();
+        changeStep();
+    });
+}
+
 function changeStep(){
     if (navNum === 1){
         map.flyTo({
@@ -318,7 +360,7 @@ function changeStep(){
         map.setLayoutProperty('heatmap', 'visibility', 'visible');
         map.setLayoutProperty('tweets_emoji', 'visibility', 'visible');
         map.setLayoutProperty('tweets', 'visibility', 'none');
-        map.setLayoutProperty('lihtc', 'visibility', 'none');
+        map.setLayoutProperty('lihtc', 'visibility', 'visible');
         updateToggles();
     }
 
@@ -330,7 +372,7 @@ function changeStep(){
         map.setLayoutProperty('heatmap', 'visibility', 'visible');
         map.setLayoutProperty('tweets_emoji', 'visibility', 'visible');
         map.setLayoutProperty('tweets', 'visibility', 'none');
-        map.setLayoutProperty('lihtc', 'visibility', 'none');
+        map.setLayoutProperty('lihtc', 'visibility', 'visible');
         updateToggles();
     }
 }
@@ -395,8 +437,10 @@ function updateToggles(){
 
     if (map.getLayoutProperty('lihtc', 'visibility') === 'visible'){
         $('#lihtc-toggle').removeClass('fa-circle-o').addClass('fa-check-circle').removeClass('deactivated');
+        $('#barchart-container').fadeIn(500);
     } else {
         $('#lihtc-toggle').removeClass('fa-check-circle').addClass('fa-circle-o').addClass('deactivated');
+        $('#barchart-container').fadeOut(500);
     }
 
     if (map.getLayoutProperty('tweets_emoji', 'visibility') === 'visible'){
@@ -418,6 +462,7 @@ function updateToggles(){
     }
 }
 
+$('#barchart-container').hide();
 barChart();
 
 function barChart(){
@@ -426,6 +471,7 @@ function barChart(){
       width = +svg.attr("width") - margin.left - margin.right,
       height = +svg.attr("height") - margin.top - margin.bottom;
       
+    var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
     var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
       y = d3.scaleLinear().rangeRound([height, 0]);
@@ -441,6 +487,7 @@ function barChart(){
         return data.properties.tw_densi_1 > 0;
     }
     data = data.filter(notZero);
+    data.sort(function(a, b){ return a.properties.tw_densi_1 - b.properties.tw_densi_1});
     //console.log(data);
     //if (error) throw error;
 
@@ -469,6 +516,26 @@ function barChart(){
         .attr("x", function(d,i) { return i*7; })
         .attr("y", function(d) { return y(d.properties.tw_densi_1); })
         .attr("width", 6)
-        .attr("height", function(d) { return height - y(d.properties.tw_densi_1); });
+        .attr("height", function(d) { return height - y(d.properties.tw_densi_1); })
+        .on('mouseover', function(d){
+            map.setFilter("lihtc-highlight", ["==", "OBJECTID", d.properties.OBJECTID]);
+            map.setLayoutProperty('lihtc-fade', 'visibility', 'visible');
+            map.setLayoutProperty('lihtc', 'visibility', 'none');
+            map.setFilter("lihtc-fade", ["!=", "OBJECTID", d.properties.OBJECTID]);
+            tooltip
+              .style("left", d3.event.pageX - 50 + "px")
+              .style("top", d3.event.pageY - 70 + "px")
+              .style("display", "inline-block")
+              .html((d.properties.PROJECT) + ": " + (d.properties.tw_densi_1) + " tweets");
+            //console.log();
+        })
+        .on('mouseout', function(d){
+            map.setFilter("lihtc-highlight", ["==", "OBJECTID", 5000]);
+            map.setLayoutProperty('lihtc-fade', 'visibility', 'none');
+            map.setLayoutProperty('lihtc', 'visibility', 'visible');
+            map.setFilter("lihtc-fade", ["!=", "OBJECTID", 5000]);
+            tooltip.style("display", "none");
+            //console.log();
+        });
     });
 }

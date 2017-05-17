@@ -43,7 +43,7 @@ html, body {
     position: absolute;
     width:400px;
     height:15%;
-    right: 0;
+    right: 30px;
     padding:10px;
 }
 
@@ -121,6 +121,7 @@ html, body {
 .nav-dots{
     width: 12px;
     height: 12px;
+    cursor:pointer;
 }
 
 #nav-title{
@@ -167,3 +168,50 @@ img.emoji {
 .axis--x path {
   display: none;
 }
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+.toolTip {
+  position: absolute;
+  display: none;
+  font-weight: bold;
+  font-size: 10px;
+  min-width: 40px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+#barchart-title{
+    font-size: 12px;
+    position: absolute;
+    margin:0;
+}
+
+/* Creates a small triangle extender for the tooltip */
+/*.toolTip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}*/
+
+/* Style northward tooltips differently */
+/*.toolTip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}*/
