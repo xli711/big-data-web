@@ -319,6 +319,7 @@ function changeStep(){
         map.setLayoutProperty('tweets_emoji', 'visibility', 'none');
         map.setLayoutProperty('tweets', 'visibility', 'visible');
         updateToggles();
+        $(".description").fadeOut(500);
     }
 
     if (navNum === 2){
@@ -331,6 +332,7 @@ function changeStep(){
         map.setLayoutProperty('tweets', 'visibility', 'none');
         map.setLayoutProperty('tweets_emoji', 'visibility', 'visible');
         updateToggles();
+        $(".description").fadeOut(500);
     }
 
     if (navNum === 3){
@@ -343,6 +345,7 @@ function changeStep(){
         map.setLayoutProperty('tweets', 'visibility', 'none');
         map.setLayoutProperty('lihtc', 'visibility', 'none');
         updateToggles();
+        $(".description").fadeOut(500);
     }
 
     if (navNum === 4){
@@ -355,11 +358,12 @@ function changeStep(){
         map.setLayoutProperty('tweets', 'visibility', 'none');
         map.setLayoutProperty('lihtc', 'visibility', 'visible');
         updateToggles();
+        $(".description").fadeOut(500);
     }
 
     if (navNum === 5){
         map.flyTo({
-            center: [-75.140036, 39.966272],
+            center: [-75.139703, 39.966272],
             zoom: 14.5
         });
         map.setLayoutProperty('heatmap', 'visibility', 'visible');
@@ -367,6 +371,7 @@ function changeStep(){
         map.setLayoutProperty('tweets', 'visibility', 'none');
         map.setLayoutProperty('lihtc', 'visibility', 'none');
         updateToggles();
+        showDescription(sites[0]);
     }
 
     if (navNum === 6){
@@ -379,6 +384,7 @@ function changeStep(){
         map.setLayoutProperty('tweets', 'visibility', 'none');
         map.setLayoutProperty('lihtc', 'visibility', 'none');
         updateToggles();
+        showDescription(sites[1]);
     }
 
     if (navNum === 7){
@@ -391,6 +397,7 @@ function changeStep(){
         map.setLayoutProperty('tweets', 'visibility', 'none');
         map.setLayoutProperty('lihtc', 'visibility', 'visible');
         updateToggles();
+        showDescription(sites[2]);
     }
 
     if (navNum === 8){
@@ -403,9 +410,31 @@ function changeStep(){
         map.setLayoutProperty('tweets', 'visibility', 'none');
         map.setLayoutProperty('lihtc', 'visibility', 'visible');
         updateToggles();
+        showDescription(sites[3]);
     }
 }
 
+
+var sites = [
+    {name: "North Liberties", num: 5, link:"northliberty.JPG", description: "Northern Liberties is located north of Center City (specifically, Old City). In recent years, Northern Liberties has become a major enclave of young professionals, students, artists, and design professionals. Large improvement and revitalization projects have also been undertaken recently, causing a large jump in property values. The neighborhood's proximity to Center City has made it one of the city's most desirable development districts, both for commercial and residential real estate."},
+    {name: "Harrowgate and surroundings", num: 6, link:"lowest_region.JPG", description: "Located close to the Delaware Express Way, this area is characterized by large blocks of big-box retail stores with parking lots."},
+    {name: "Lancester Ave at Spring Garden St", num: 7, link:"highest_emoji_lihtc.JPG", description: "This LIHTC development is located right along Lancester Ave, which is a commercial corridor that extends from Drexel University Campus. Its surroundings seems to be dominated by two to three story buildings with robust streetscape, and the development is adjacent to a number of restaurants and a police station."},
+    {name: "Nicetown Court", num: 8, link:"lowest_emoji_lihtc.JPG", description: "This development is a four-story building that seems to be newly developed, and is located right next to the elevated Lincoln Highway/Roosevelt Express Way. The surrounding neighborhood looks old but clean and safe, with a number of commercial amenities scattered."},
+
+]
+
+$(".description").hide();
+
+$(".close-button").on("click", function(){
+    $(".description").fadeOut(500);
+});
+
+function showDescription(site){
+    $("#site-title").html(site.name);
+    $("#site-streetview").attr("src", "img/streetviews/" + site.link);
+    $("#site-description").html(site.description);
+    $(".description").fadeIn(500);
+}
 
 
 function updateNav(){
@@ -490,6 +519,8 @@ function updateToggles(){
         $('#gradient-legend').fadeOut(500);
     }
 }
+
+
 
 $('#barchart-container').hide();
 barChart();

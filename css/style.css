@@ -32,11 +32,10 @@ html, body {
 #nav-container{
     position: absolute;
     left:450px;
-    width:300px;
+    width:350px;
     margin:auto;
     height:15%;
     padding:10px;
-    padding-top: 15px;
 }
 
 #barchart-container{
@@ -126,8 +125,8 @@ html, body {
 
 #nav-title{
     margin-top: 10px;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 18px;
+    line-height: 22px;
 }
 
 .nav-dots-circle{
@@ -196,22 +195,39 @@ img.emoji {
     margin:0;
 }
 
-/* Creates a small triangle extender for the tooltip */
-/*.toolTip:after {
-  box-sizing: border-box;
-  display: inline;
-  font-size: 10px;
-  width: 100%;
-  line-height: 1;
-  color: rgba(0, 0, 0, 0.8);
-  content: "\25BC";
-  position: absolute;
-  text-align: center;
-}*/
+.description{
+    position:absolute;
+    background-color: #fff;
+    right: 10px;
+    top: 10px;
+    width: 300px;
+    padding: 10px;
+    z-index: 1;
+}
 
-/* Style northward tooltips differently */
-/*.toolTip.n:after {
-  margin: -1px 0 0 0;
-  top: 100%;
-  left: 0;
-}*/
+.description-wrapper {
+    position: relative;
+    width: 280px;
+    height: 100%;
+    display:table;
+    overflow:hidden;
+}
+
+.description-wrapper li{
+    list-style: none;
+}
+
+#site-streetview{
+    width:100%;
+}
+
+.close-button{
+    display: block;
+    position:absolute;
+    width:20px;
+    font-size:18px;
+    top: 0;
+    right: 0;
+    color:rgb(100,100,100);
+    cursor:pointer
+}
