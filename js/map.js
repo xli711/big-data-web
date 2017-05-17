@@ -164,12 +164,41 @@ map.on('load', function () {
             }
         }
     });
+
+    var popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+    });
+
+    map.on('mouseenter', 'lihtc', function(e) {
+        //if (map.getZoom() > 13){
+            // Change the cursor style as a UI indicator.
+            map.getCanvas().style.cursor = 'pointer';
+
+            // Populate the popup and set its coordinates
+            // based on the feature found.
+            //twemoji.size = '16x16';
+            var count = e.features[0].properties.tw_densi_1;
+            var name = e.features[0].properties.PROJECT;
+            var score = e.features[0].properties.MEAN_tw_de;
+
+            popup.setLngLat(e.features[0].geometry.coordinates)
+            .setHTML(name + "<br>"+ count + " tweets" + "<br>" + "Score: " + score)
+            .addTo(map);
+        //}
+    });
+
+    map.on('mouseleave', 'lihtc', function() {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+    });
 });
 
 var layerIDs = ['heatmap', 'lihtc', 'tweets', 'tweets_emoji'];
 
-map.on('zoomend', function(){
 
+
+map.on('zoomend', function(){
     var popup = new mapboxgl.Popup({
         closeButton: false,
         closeOnClick: false
