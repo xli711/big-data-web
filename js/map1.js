@@ -305,6 +305,10 @@ var path = d3.geoPath()
 
 var g2 = svg2.append("g");
 
+var legendbar = d3.scaleLinear()
+    .doamin([1,6])
+    .rangeRound([30,130]);
+
 var tooltip = d3.select("#map1")
   .append("svg2")
   .style("position","absolute")
@@ -332,6 +336,10 @@ d3.queue()
             .domain([0.116156,0.555,1.033,1.50,2.46])
             .range(d3.schemeReds[5]);
 
+        var legend=d3.scaleThreshold()
+            .domain(d3.range(2,6))
+            .range(d3.schemeReds[5]);
+
         var mapcolors1 = d3.scaleThreshold()
             .domain([0.42])
             .range(["black",c]);
@@ -357,7 +365,7 @@ d3.queue()
   svg2.append("g")
       .append("rect")
       .attr("fill",c)
-      .attr("x",50)
+      .attr("x",30)
       .attr("y",y3)
       .attr("width",20)
       .attr("height",10);
@@ -365,7 +373,7 @@ d3.queue()
   svg2.append("g")
       .append("rect")
       .attr("fill",cr)
-      .attr("x",200)
+      .attr("x",170)
       .attr("y",y3)
       .attr("width",20)
       .attr("height",10);
@@ -373,7 +381,7 @@ d3.queue()
   svg2.append("g")
       .append("rect")
       .attr("fill",r)
-      .attr("x",350)
+      .attr("x",300)
       .attr("y",y3)
       .attr("width",20)
       .attr("height",10);
@@ -381,20 +389,28 @@ d3.queue()
   svg2.append("text")
       .attr("class","lable")
       .text("Commercial Parcels")
-      .attr("x",75)
+      .attr("x",55)
       .attr("y",y3+10);
 
   svg2.append("text")
       .attr("class","lable")
       .text("Mixeduse Parcels")
-      .attr("x",225)
+      .attr("x",195)
       .attr("y",y3+10);
 
   svg2.append("text")
       .attr("class","lable")
       .text("Residential Parcels")
-      .attr("x",375)
+      .attr("x",325)
       .attr("y",y3+10);
+
+  svg2.append("g")
+      .append("rect")
+      .attr("fill",function(d){return legend(d[0]);})
+      .attr("x",function(d){ return legendbar(d[0]);})
+      .attr("y",30)
+      .attr("width",100)
+      .attr("height",10);
 
   g2.append("g")
       .attr("class", "map")
@@ -415,7 +431,7 @@ d3.queue()
     .selectAll("path")
       .data(lucomparison.features)
     .enter().append("path")
-      .attr("fill",function(d){return mapcolors(d.properties.tw_c_acre);})
+      .attr("fill",function(d){console.log(d); return mapcolors(d.properties.tw_c_acre);})
       .attr("d", path);
 
   g2.append("g")
