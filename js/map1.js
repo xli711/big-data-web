@@ -556,7 +556,7 @@ d3.queue()
     .enter().append("path")
       .attr("fill",function(d){return mapcolors6(d.properties.agg);})
       .attr("d", path)
-      .on("click",function(d){
+      .on("mouseover",function(d){
         return tooltip.style("visibility", "visible").text(d.properties.DIST_NAME);
       })
       .on("mousemove", function(d){
