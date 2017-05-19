@@ -309,7 +309,7 @@ var tooltip1 = d3.select("#map1")
 
 
 d3.queue()
-    .defer(d3.json,"data/luall.geojson")
+    .defer(d3.json,"assets/geojsons/luall.geojson")
     .defer(d3.csv,"data/lu.csv")
     .await(ready);
 

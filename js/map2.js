@@ -281,7 +281,7 @@ var xtooltip1 = d3.select("#map2")
 
 
 d3.queue()
-    .defer(d3.json,"data/r_lihtc_1.geojson")
+    .defer(d3.json,"assets/geojsons/r_lihtc_1.geojson")
     .await(ready);
 
     function ready(error,r_lihtc_1){
