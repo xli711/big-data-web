@@ -181,11 +181,11 @@ var barxwidth=10;
       //   return xtooltip1.style("visibility","hidden")
       // });
 
-      // xsvg1.append("text")
-      //   .attr("class","lable")
-      //   .text("0.37")
-      //   .attr("x",xx2-2)
-      //   .attr("y",287.7);
+      xsvg1.append("text")
+        .attr("class","lable")
+        .text("0.37")
+        .attr("x",xx2-2)
+        .attr("y",287.7);
 
 
 
@@ -282,7 +282,7 @@ var xtooltip1 = d3.select("#map2")
 
 
 d3.queue()
-    .defer(d3.json,"data/r_lihtc_1.geojson")
+    .defer(d3.json,"assets/geojsons/r_lihtc_1.geojson")
     .await(ready);
 
     function ready(error,r_lihtc_1){

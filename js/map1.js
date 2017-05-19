@@ -195,11 +195,11 @@ var barwidth=10;
       //   return tooltip1.style("visibility", "hidden")
       // });
 
-      // svg1.append("text")
-      //   .attr("class","lable")
-      //   .text("0.41")
-      //   .attr("x",x2-2)
-      //   .attr("y",274.8);
+      svg1.append("text")
+        .attr("class","lable")
+        .text("0.41")
+        .attr("x",x2-2)
+        .attr("y",274.8);
 
   svg1.append("g")
     .attr("class", "bar")
@@ -223,11 +223,11 @@ var barwidth=10;
       //   return tooltip1.style("visibility", "hidden")
       // });
 
-      // svg1.append("text")
-      //   .attr("class","lable")
-      //   .text("0.39")
-      //   .attr("x",x3-2)
-      //   .attr("y",287.7);
+      svg1.append("text")
+        .attr("class","lable")
+        .text("0.39")
+        .attr("x",x3-2)
+        .attr("y",287.7);
 
 function wrap(text, width) {
   text.each(function() {
@@ -308,7 +308,7 @@ var tooltip1 = d3.select("#map1")
 
 
 d3.queue()
-    .defer(d3.json,"data/luall.geojson")
+    .defer(d3.json,"assets/geojsons/luall.geojson")
     .defer(d3.csv,"data/lu.csv")
     .await(ready);
 
