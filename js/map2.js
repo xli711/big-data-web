@@ -42,7 +42,8 @@ var barxwidth=10;
         this.parentNode.appendChild(this);
       });
     };
-    d3.selection.prototype.moveToBack = function() {  
+    d3.selection.prototype.moveToBack = function() {
+
         return this.each(function() { 
             var firstChild = this.parentNode.firstChild; 
             if (firstChild) { 
@@ -73,7 +74,7 @@ var barxwidth=10;
       .attr("width",barxwidth)
       .attr("y",186.9)
       .attr("height",37.1)
-      .on("mouseover", function(d){
+      .on("click", function(d){
       //Determine if current line is visible
      // var active   = c_density.active ? false : true,
      //   newOpacity = active ? 0 : 1;
@@ -81,18 +82,18 @@ var barxwidth=10;
     d3.select("#xr_density").moveToFront();
     d3.select("#xdistrict-borders").moveToFront();
     d3.selectAll("#xr_legend").moveToFront();
-    d3.select("#xmask").moveToFront();
+    d3.select("#initialx").style("visibility", "hidden");
     return xtooltip1.style("visibility", "visible").text("Residential Activity Level by Population");
     // d3.select("#c_density").moveToBack();
     // Update whether or not the elements are active
     // c_density.active = active;
-  })
-      .on("mouseout", function(d){
-        d3.select("#xr_density").moveToBack();
-        d3.selectAll("#xr_legend").moveToBack();
-        d3.select("#xmask").moveToBack();
-        return xtooltip1.style("visibility","hidden");
-      });
+  });
+      // .on("mouseout", function(d){
+      //   d3.select("#xr_density").moveToBack();
+      //   d3.selectAll("#xr_legend").moveToBack();
+      //   d3.select("#xmask").moveToBack();
+      //   return xtooltip1.style("visibility","hidden");
+      // });
 
   xsvg1.append("text")
     .attr("class","lable")
@@ -108,19 +109,19 @@ var barxwidth=10;
     .attr("width",barxwidth)
     .attr("y",20)
     .attr("height",204)
-    .on("mouseover",function(d){
+    .on("click",function(d){
         d3.select("#lihtc_density").moveToFront();
         d3.select("#xdistrict-borders").moveToFront();
         d3.selectAll("#lihtc_legend").moveToFront();
-        d3.select("#xmask").moveToFront();
+        d3.select("#initialx").style("visibility", "hidden");
         return xtooltip1.style("visibility","visible").text("LIHTC Activity Level by Population");
-      })
-      .on("mouseout",function(d){
-        d3.select("#lihtc_density").moveToBack();
-        d3.selectAll("#lihtc_legend").moveToBack();
-        d3.select("#xmask").moveToBack();
-        return xtooltip1.style("visibility","hidden")
       });
+      // .on("mouseout",function(d){
+      //   d3.select("#lihtc_density").moveToBack();
+      //   d3.selectAll("#lihtc_legend").moveToBack();
+      //   d3.select("#xmask").moveToBack();
+      //   return xtooltip1.style("visibility","hidden")
+      // });
 
     xsvg1.append("text")
     .attr("class","lable")
@@ -137,19 +138,19 @@ var barxwidth=10;
       .attr("width",barxwidth)
       .attr("y",272.2)
       .attr("height",132.8)
-      .on("mouseover",function(d){
+      .on("click",function(d){
         d3.select("#xr_emoji").moveToFront();
         d3.select("#xdistrict-borders").moveToFront();
         d3.selectAll("#xr_legend").moveToFront();
-        d3.select("#xmask").moveToFront();
+        d3.select("#initialx").style("visibility", "hidden");
         return xtooltip1.style("visibility", "visible").text("Residential Sentiment Level by Population");
-      })
-      .on("mouseout",function(d){
-        d3.select("#xr_emoji").moveToBack();
-        d3.selectAll("#xr_legend").moveToBack();
-        d3.select("#xmask").moveToBack();
-        return xtooltip1.style("visibility","hidden");
       });
+      // .on("mouseout",function(d){
+      //   d3.select("#xr_emoji").moveToBack();
+      //   d3.selectAll("#xr_legend").moveToBack();
+      //   d3.select("#xmask").moveToBack();
+      //   return xtooltip1.style("visibility","hidden");
+      // });
 
     xsvg1.append("text")
         .attr("class","lable")
@@ -166,25 +167,25 @@ var barxwidth=10;
     .attr("width",barxwidth)
     .attr("y",291.7)
     .attr("height",113.3)
-    .on("mouseover",function(d){
+    .on("click",function(d){
         d3.select("#lihtc_emoji").moveToFront();
         d3.select("#xdistrict-borders").moveToFront();
         d3.selectAll("#lihtc_legend").moveToFront();
-        d3.select("#xmask").moveToFront();
+        d3.select("#initialx").style("visibility", "hidden");
         return xtooltip1.style("visibility","visible").text("LIHTC Sentiment Level by Population");
-      })
-      .on("mouseout",function(d){
-        d3.select("#lihtc_emoji").moveToBack();
-        d3.selectAll("#lihtc_legend").moveToBack();
-        d3.select("#xmask").moveToBack();
-        return xtooltip1.style("visibility","hidden")
       });
+      // .on("mouseout",function(d){
+      //   d3.select("#lihtc_emoji").moveToBack();
+      //   d3.selectAll("#lihtc_legend").moveToBack();
+      //   d3.select("#xmask").moveToBack();
+      //   return xtooltip1.style("visibility","hidden")
+      // });
 
-      xsvg1.append("text")
-        .attr("class","lable")
-        .text("0.37")
-        .attr("x",xx2-2)
-        .attr("y",287.7);
+      // xsvg1.append("text")
+      //   .attr("class","lable")
+      //   .text("0.37")
+      //   .attr("x",xx2-2)
+      //   .attr("y",287.7);
 
 
 
@@ -281,7 +282,7 @@ var xtooltip1 = d3.select("#map2")
 
 
 d3.queue()
-    .defer(d3.json,"assets/geojsons/r_lihtc_1.geojson")
+    .defer(d3.json,"data/r_lihtc_1.geojson")
     .await(ready);
 
     function ready(error,r_lihtc_1){
@@ -478,17 +479,18 @@ d3.queue()
         .attr("id", "xdistrict-borders")
         .attr("d", xpath);
 
-   xsvg2.append("g")
-      .attr("id", "xmask")
-      .append("rect")
-      .attr("fill","white")
-      .attr('x',150)
-      .attr('y',0)
-      .attr('width',240)
-      .attr('height',20)
+   // xsvg2.append("g")
+   //    .attr("id", "xmask")
+   //    .append("rect")
+   //    .attr("fill","white")
+   //    .attr('x',150)
+   //    .attr('y',0)
+   //    .attr('width',240)
+   //    .attr('height',20)
 
   xg2.append("text")
       .attr("class","lable")
+      .attr("id","initialx")
       .text("Density of LIHTC Developments")
       .attr("x",150)
       .attr("y",18);

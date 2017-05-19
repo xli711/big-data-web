@@ -59,30 +59,29 @@ var barwidth=10;
       .attr("width",barwidth)
       .attr("y",129.2)
       .attr("height",94.8)
-      .on("mouseover", function(d){
-        
-      //Determine if current line is visible
+      .on("click", function(d){
+ 
      // var active   = c_density.active ? false : true,
      //   newOpacity = active ? 0 : 1;
      // Hide or show the elements
     d3.select("#c_density").moveToFront2();
     d3.selectAll("#lc_density").moveToFront2();
     d3.select("#district-borders").moveToFront2();
-    d3.select("#mask").moveToFront2();
+    d3.select("#initial").style("visibility", "hidden");
     return tooltip1.style("visibility", "visible").text("Commercial Parcel Activity level");
     // d3.select("#c_density").moveToBack();
     // Update whether or not the elements are active
     // c_density.active = active;
-  })
-      .on("mousemove", function(d){
-        return tooltip1.text("Commercial Parcel Activity level");
-      })
-      .on("mouseout", function(d){
-        d3.select("#c_density").moveToBack2();
-        d3.selectAll("#lc_density").moveToBack2();
-        d3.select("#mask").moveToBack2();
-        return tooltip1.style("visibility", "hidden");
-      });
+  });
+      // .on("mousemove", function(d){
+      //   return tooltip1.text("Commercial Parcel Activity level");
+      // })
+      // .on("mouseout", function(d){
+      //   d3.select("#c_density").moveToBack2();
+      //   d3.selectAll("#lc_density").moveToBack2();
+      //   d3.select("#mask").moveToBack2();
+      //   return tooltip1.style("visibility", "hidden");
+      // });
 
   svg1.append("text")
     .attr("class","lable")
@@ -98,19 +97,19 @@ var barwidth=10;
     .attr("width",barwidth)
     .attr("y",20)
     .attr("height",204)
-    .on("mouseover",function(d){
+    .on("click",function(d){
         d3.select("#cr_density").moveToFront2();
         d3.selectAll("#cr_legend").moveToFront2();
         d3.select("#district-borders").moveToFront2();
-        d3.select("#mask").moveToFront2();
+        d3.select("#initial").style("visibility", "hidden");
         return tooltip1.style("visibility", "visible").text("Mixeduse Parcel Activity level");
-      })
-      .on("mouseout",function(d){
-        d3.select("#cr_density").moveToBack2();
-        d3.selectAll("#cr_legend").moveToBack2();
-        d3.select("#mask").moveToBack2();
-        return tooltip1.style("visibility", "hidden");
       });
+      // .on("mouseout",function(d){
+      //   d3.select("#cr_density").moveToBack2();
+      //   d3.selectAll("#cr_legend").moveToBack2();
+      //   d3.select("#mask").moveToBack2();
+      //   return tooltip1.style("visibility", "hidden");
+      // });
 
     svg1.append("text")
     .attr("class","lable")
@@ -126,19 +125,19 @@ var barwidth=10;
     .attr("width",barwidth)
     .attr("y",203.2)
     .attr("height",20.8)
-    .on("mouseover",function(d){
+    .on("click",function(d){
         d3.select("#r_density").moveToFront2();
         d3.selectAll("#r_legend").moveToFront2();
         d3.select("#district-borders").moveToFront2();
-        d3.select("#mask").moveToFront2();
+        d3.select("#initial").style("visibility", "hidden");
         return tooltip1.style("visibility", "visible").text("Residential Parcel Activity level");
-      })
-      .on("mouseout",function(d){
-        d3.select("#r_density").moveToBack2();
-        d3.selectAll("#r_legend").moveToBack2();
-        d3.select("#mask").moveToBack2();
-        return tooltip1.style("visibility", "hidden");
       });
+      // .on("mouseout",function(d){
+      //   d3.select("#r_density").moveToBack2();
+      //   d3.selectAll("#r_legend").moveToBack2();
+      //   d3.select("#mask").moveToBack2();
+      //   return tooltip1.style("visibility", "hidden");
+      // });
 
     svg1.append("text")
     .attr("class","lable")
@@ -154,19 +153,19 @@ var barwidth=10;
       .attr("width",barwidth)
       .attr("y",272.2)
       .attr("height",132.8)
-      .on("mouseover",function(d){
+      .on("click",function(d){
         d3.select("#c_emoji").moveToFront2();
         d3.select("#district-borders").moveToFront2();
         d3.selectAll("#lc_density").moveToFront2();
-        d3.select("#mask").moveToFront2();
+        d3.select("#initial").style("visibility", "hidden");
         return tooltip1.style("visibility", "visible").text("Commercial Parcel Sentiment level");
-      })
-      .on("mouseout",function(d){
-        d3.select("#c_emoji").moveToBack2();
-        d3.selectAll("#lc_density").moveToBack2();
-        d3.select("#mask").moveToBack2();
-        return tooltip1.style("visibility", "hidden");
       });
+      // .on("mouseout",function(d){
+      //   d3.select("#c_emoji").moveToBack2();
+      //   d3.selectAll("#lc_density").moveToBack2();
+      //   d3.select("#mask").moveToBack2();
+      //   return tooltip1.style("visibility", "hidden");
+      // });
 
     svg1.append("text")
         .attr("class","lable")
@@ -182,25 +181,25 @@ var barwidth=10;
     .attr("width",barwidth)
     .attr("y",278.8)
     .attr("height",126.2)
-    .on("mouseover",function(d){
+    .on("click",function(d){
         d3.select("#cr_emoji").moveToFront2();
         d3.select("#district-borders").moveToFront2();
         d3.selectAll("#cr_legend").moveToFront2();
-        d3.select("#mask").moveToFront2();
+        d3.select("#initial").style("visibility", "hidden");
         return tooltip1.style("visibility", "visible").text("Mixeduse Parcel Sentiment level");
-      })
-      .on("mouseout",function(d){
-        d3.select("#cr_emoji").moveToBack2();
-        d3.selectAll("#cr_legend").moveToBack2();
-        d3.select("#mask").moveToBack2();
-        return tooltip1.style("visibility", "hidden")
       });
+      // .on("mouseout",function(d){
+      //   d3.select("#cr_emoji").moveToBack2();
+      //   d3.selectAll("#cr_legend").moveToBack2();
+      //   d3.select("#mask").moveToBack2();
+      //   return tooltip1.style("visibility", "hidden")
+      // });
 
-      svg1.append("text")
-        .attr("class","lable")
-        .text("0.41")
-        .attr("x",x2-2)
-        .attr("y",274.8);
+      // svg1.append("text")
+      //   .attr("class","lable")
+      //   .text("0.41")
+      //   .attr("x",x2-2)
+      //   .attr("y",274.8);
 
   svg1.append("g")
     .attr("class", "bar")
@@ -210,25 +209,25 @@ var barwidth=10;
     .attr("width",barwidth)
     .attr("y",291.7)
     .attr("height",113.3)
-    .on("mouseover",function(d){
+    .on("click",function(d){
         d3.select("#r_emoji").moveToFront2();
         d3.selectAll("#district-borders").moveToFront2();
         d3.selectAll("#r_legend").moveToFront2();
-        d3.select("#mask").moveToFront2();
+        d3.select("#initial").style("visibility", "hidden");
         return tooltip1.style("visibility", "visible").text("Residential Parcel Sentiment level");
-      })
-      .on("mouseout",function(d){
-        d3.select("#r_emoji").moveToBack2();
-        d3.selectAll("#r_legend").moveToBack2();
-        d3.select("#mask").moveToBack2();
-        return tooltip1.style("visibility", "hidden")
       });
+      // .on("mouseout",function(d){
+      //   d3.select("#r_emoji").moveToBack2();
+      //   d3.selectAll("#r_legend").moveToBack2();
+      //   d3.select("#mask").moveToBack2();
+      //   return tooltip1.style("visibility", "hidden")
+      // });
 
-      svg1.append("text")
-        .attr("class","lable")
-        .text("0.39")
-        .attr("x",x3-2)
-        .attr("y",287.7);
+      // svg1.append("text")
+      //   .attr("class","lable")
+      //   .text("0.39")
+      //   .attr("x",x3-2)
+      //   .attr("y",287.7);
 
 function wrap(text, width) {
   text.each(function() {
@@ -309,7 +308,7 @@ var tooltip1 = d3.select("#map1")
 
 
 d3.queue()
-    .defer(d3.json,"assets/geojsons/luall.geojson")
+    .defer(d3.json,"data/luall.geojson")
     .defer(d3.csv,"data/lu.csv")
     .await(ready);
 
@@ -557,7 +556,7 @@ d3.queue()
     .enter().append("path")
       .attr("fill",function(d){return mapcolors6(d.properties.agg);})
       .attr("d", path)
-      .on("mouseover",function(d){
+      .on("click",function(d){
         return tooltip.style("visibility", "visible").text(d.properties.DIST_NAME);
       })
       .on("mousemove", function(d){
@@ -572,18 +571,12 @@ d3.queue()
         .attr("id", "district-borders")
         .attr("d", path);
 
-  svg2.append("g")
-      .attr("id", "mask")
-      .append("rect")
-      .attr("fill","white")
-      .attr('x',150)
-      .attr('y',0)
-      .attr('width',240)
-      .attr('height',20)
-
   g2.append("text")
       .attr("class","lable")
+      .attr("id","initial")
       .text("Tweets Activity and Sentiment Level Aggregated")
       .attr("x",150)
-      .attr("y",18);
+      .attr("y",18)
+      .attr("z-index",10);
 };
+
