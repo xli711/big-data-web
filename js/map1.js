@@ -16,19 +16,6 @@ var x1=55,
     y1=400,
     y2=450;
 
-var x=d3.scaleBand()
-    .rangeRound([0,width1])
-    .padding(0.1,0.3);
-
-var y = d3.scaleLinear()
-    .range([(height-gap)/2, 0])
-    .domain([1.5,0]);
-
-var xAxis=d3.axisBottom(x);
-
-// var yAxis=d3.axisLeft(y).ticks(8);
-
-
 var svg1 = d3.select("#map1").append("svg")
   .attr("id","svg1")
     .attr("width", width1+margin.left+margin.right)
@@ -38,43 +25,6 @@ var svg1 = d3.select("#map1").append("svg")
 
 var barwidth=10;
 
-// load the data
-d3.csv("data/landuse.csv",type, function(error,data){
-      x.domain(data.map(function(d){return d.field;}));
-      y.domain([0,d3.max(data, function(d){return d.level;})]);
-      // if (error,data) {if (error) throw error;
-
-  // svg1.append("text")
-  //     .attr("class","title")
-  //     .attr("x",100)
-  //     .attr("y",26)
-  //     .text("Twitter Pattern in Different Planning District");
-
-  // svg1.append("g")
-  //     .attr("class","x axis")
-  //     .attr("transform","translate(0," + height + ")")
-  //     .call(xAxis)
-  //   .selectAll("text")
-  //     .call(wrap,x.bandwidth());
-
-  // svg1.append("g")
-  //   .attr("class","y axis")
-  //   .call(yAxis);
-
-
-  // svg1.selectAll(".bar")
-  //     .data(data)
-  //   .enter().append("rect")
-  //     .attr("class", "bar")
-  //     .attr("id", function(d,i){console.log(d); return i;})
-  //     .attr("fill","white")
-  //     .attr("x", function(d,i) { return 45+88*i; })
-  //     .attr("width", 10)
-  //     .attr("y", function(d){return y(d.level);})
-  //     .attr("height", function(d) {return height-y(d.level);});
-
-  
-    // https://github.com/wbkd/d3-extended
     d3.selection.prototype.moveToFront2 = function() {  
       return this.each(function(){
         this.parentNode.appendChild(this);
@@ -101,8 +51,6 @@ d3.csv("data/landuse.csv",type, function(error,data){
       .attr("x",30)
       .attr("y",425);
 
-
-
   svg1.append("g")
       .attr("class", "bar")
       .append("rect")
@@ -112,18 +60,28 @@ d3.csv("data/landuse.csv",type, function(error,data){
       .attr("y",129.2)
       .attr("height",94.8)
       .on("mouseover", function(d){
+        
       //Determine if current line is visible
      // var active   = c_density.active ? false : true,
      //   newOpacity = active ? 0 : 1;
      // Hide or show the elements
     d3.select("#c_density").moveToFront2();
+    d3.selectAll("#lc_density").moveToFront2();
     d3.select("#district-borders").moveToFront2();
+    d3.select("#mask").moveToFront2();
+    return tooltip1.style("visibility", "visible").text("Commercial Parcel Activity level");
     // d3.select("#c_density").moveToBack();
     // Update whether or not the elements are active
     // c_density.active = active;
   })
+      .on("mousemove", function(d){
+        return tooltip1.text("Commercial Parcel Activity level");
+      })
       .on("mouseout", function(d){
         d3.select("#c_density").moveToBack2();
+        d3.selectAll("#lc_density").moveToBack2();
+        d3.select("#mask").moveToBack2();
+        return tooltip1.style("visibility", "hidden");
       });
 
   svg1.append("text")
@@ -142,10 +100,16 @@ d3.csv("data/landuse.csv",type, function(error,data){
     .attr("height",204)
     .on("mouseover",function(d){
         d3.select("#cr_density").moveToFront2();
+        d3.selectAll("#cr_legend").moveToFront2();
         d3.select("#district-borders").moveToFront2();
+        d3.select("#mask").moveToFront2();
+        return tooltip1.style("visibility", "visible").text("Mixeduse Parcel Activity level");
       })
       .on("mouseout",function(d){
         d3.select("#cr_density").moveToBack2();
+        d3.selectAll("#cr_legend").moveToBack2();
+        d3.select("#mask").moveToBack2();
+        return tooltip1.style("visibility", "hidden");
       });
 
     svg1.append("text")
@@ -164,10 +128,16 @@ d3.csv("data/landuse.csv",type, function(error,data){
     .attr("height",20.8)
     .on("mouseover",function(d){
         d3.select("#r_density").moveToFront2();
+        d3.selectAll("#r_legend").moveToFront2();
         d3.select("#district-borders").moveToFront2();
+        d3.select("#mask").moveToFront2();
+        return tooltip1.style("visibility", "visible").text("Residential Parcel Activity level");
       })
       .on("mouseout",function(d){
         d3.select("#r_density").moveToBack2();
+        d3.selectAll("#r_legend").moveToBack2();
+        d3.select("#mask").moveToBack2();
+        return tooltip1.style("visibility", "hidden");
       });
 
     svg1.append("text")
@@ -187,9 +157,15 @@ d3.csv("data/landuse.csv",type, function(error,data){
       .on("mouseover",function(d){
         d3.select("#c_emoji").moveToFront2();
         d3.select("#district-borders").moveToFront2();
+        d3.selectAll("#lc_density").moveToFront2();
+        d3.select("#mask").moveToFront2();
+        return tooltip1.style("visibility", "visible").text("Commercial Parcel Sentiment level");
       })
       .on("mouseout",function(d){
         d3.select("#c_emoji").moveToBack2();
+        d3.selectAll("#lc_density").moveToBack2();
+        d3.select("#mask").moveToBack2();
+        return tooltip1.style("visibility", "hidden");
       });
 
     svg1.append("text")
@@ -209,9 +185,15 @@ d3.csv("data/landuse.csv",type, function(error,data){
     .on("mouseover",function(d){
         d3.select("#cr_emoji").moveToFront2();
         d3.select("#district-borders").moveToFront2();
+        d3.selectAll("#cr_legend").moveToFront2();
+        d3.select("#mask").moveToFront2();
+        return tooltip1.style("visibility", "visible").text("Mixeduse Parcel Sentiment level");
       })
       .on("mouseout",function(d){
         d3.select("#cr_emoji").moveToBack2();
+        d3.selectAll("#cr_legend").moveToBack2();
+        d3.select("#mask").moveToBack2();
+        return tooltip1.style("visibility", "hidden")
       });
 
       svg1.append("text")
@@ -231,9 +213,15 @@ d3.csv("data/landuse.csv",type, function(error,data){
     .on("mouseover",function(d){
         d3.select("#r_emoji").moveToFront2();
         d3.selectAll("#district-borders").moveToFront2();
+        d3.selectAll("#r_legend").moveToFront2();
+        d3.select("#mask").moveToFront2();
+        return tooltip1.style("visibility", "visible").text("Residential Parcel Sentiment level");
       })
       .on("mouseout",function(d){
         d3.select("#r_emoji").moveToBack2();
+        d3.selectAll("#r_legend").moveToBack2();
+        d3.select("#mask").moveToBack2();
+        return tooltip1.style("visibility", "hidden")
       });
 
       svg1.append("text")
@@ -241,19 +229,6 @@ d3.csv("data/landuse.csv",type, function(error,data){
         .text("0.39")
         .attr("x",x3-2)
         .attr("y",287.7);
-
-
-
-  // svg1.selectAll(".text")
-  //     .data(data)
-  //   .enter().append("text")
-  //   .attr("class","x axis")
-  //   .attr("x",function(d,i){return 45+88*i;})
-  //   .attr("y",function(d){return y(d.level)-10;})
-  //   .attr("dy",".75em")
-
-  //   .text(function(d){return d.level;});
-});
 
 function wrap(text, width) {
   text.each(function() {
@@ -279,11 +254,6 @@ function wrap(text, width) {
   });
 }
 
-function type(d) {
-  d.level = +d.level;
-  return d;
-}
-
 //svg2
 var width2=500;
 svg2 = d3.select("#map1")
@@ -305,6 +275,10 @@ var path = d3.geoPath()
 
 var g2 = svg2.append("g");
 
+var legendbar = d3.scaleLinear()
+    .domain([1, 6])
+    .rangeRound([400,500]);
+
 var tooltip = d3.select("#map1")
   .append("svg2")
   .style("position","absolute")
@@ -312,32 +286,58 @@ var tooltip = d3.select("#map1")
   .style("font-size", "10px")
   .style("z-index", "10")
   .style("padding","5px")
+  .style("background", "white")
   .style("border-style", "dashed")
   .style("border-width","2px")
   .style("visibility", "hidden")
   .style("background","white")
   .style("opacity","0.8");
 
+var tooltip1 = d3.select("#map1")
+  .append("svg2")
+  .style("class","lable")
+  .style("position","absolute")
+  .style("font-family", "'Open Sans', sans-serif")
+  .style("font-size", "10px")
+  .style("x","120px")
+  .style("z-index", "10")
+  .style("padding","5px")
+  .style("background", "white")
+  .style("visibility", "hidden")
+  .style("background","white");
+
+
 
 d3.queue()
-    .defer(d3.json,"data/lucomparison.geojson")
+    .defer(d3.json,"data/luall.geojson")
     .defer(d3.csv,"data/lu.csv")
     .await(ready);
 
-    function ready(error,lucomparison,lu){
+    function ready(error,luall,lu){
       if (error) throw error;
-
         
         var mapcolors = d3.scaleThreshold()
             .domain([0.116156,0.555,1.033,1.50,2.46])
             .range(d3.schemeReds[5]);
 
-        var mapcolors1 = d3.scaleThreshold()
-            .domain([0.42])
+        var legend=d3.scaleThreshold()
+            .domain(d3.range(2,6))
+            .range(d3.schemeReds[5]);
+
+        var legend1=d3.scaleThreshold()
+            .domain(d3.range(2,3))
             .range(["black",c]);
+
+        var mapcolors1 = d3.scaleThreshold()
+            .domain([0,0.42])
+            .range(d3.schemeReds[3]);
 
         var mapcolors2 = d3.scaleThreshold()
             .domain([0.389,0.87,1.65,3.37,4.67])
+            .range(d3.schemeOranges[5]);
+
+        var legend2=d3.scaleThreshold()
+            .domain(d3.range(2,6))
             .range(d3.schemeOranges[5]);
 
         var mapcolors3 = d3.scaleThreshold()
@@ -348,16 +348,87 @@ d3.queue()
             .domain([0.01,0.039,0.072,0.1036,0.79])
             .range(d3.schemeGreens[5]);
 
+        var legend3=d3.scaleThreshold()
+            .domain(d3.range(2,6))
+            .range(d3.schemeGreens[5]);
+
         var mapcolors5 = d3.scaleThreshold()
             .domain([0,0.26,0.389,0.4668,0.678])
             .range(d3.schemeGreens[5]);
 
+        var mapcolors6 = d3.scaleThreshold()
+            .domain([0,1.12,3.75,5.795,8.828])
+            .range(d3.schemeGreys[5]);
+
+        var legend4 = d3.scaleThreshold()
+            .domain(d3.range(2,6))
+            .range(d3.schemeGreys[5]);
+
   var y3=415;
+
+    g2.selectAll(".rect")
+    .data(legend.range().map(function(d) {
+      d = legend.invertExtent(d);
+      if (d[0] == null) d[0] = legendbar.domain()[0];
+      if (d[1] == null) d[1] = legendbar.domain()[1];
+      return d;
+    }))
+  .enter().append("rect")
+      .attr("id","lc_density")
+      .attr("fill",function(d){return legend(d[0]);})
+      .attr("x",function(d){ return legendbar(d[0]);})
+      .attr("y",5)
+      .attr("width",function(d){return legendbar(d[1])-legendbar(d[0]);})
+      .attr("height",10);
+
+      g2.selectAll(".rect")
+    .data(legend2.range().map(function(d) {
+      d = legend2.invertExtent(d);
+      if (d[0] == null) d[0] = legendbar.domain()[0];
+      if (d[1] == null) d[1] = legendbar.domain()[1];
+      return d;
+    }))
+  .enter().append("rect")
+  .attr("id","cr_legend")
+      .attr("fill",function(d){return legend2(d[0]);})
+      .attr("x",function(d){ return legendbar(d[0]);})
+      .attr("y",5)
+      .attr("width",function(d){return legendbar(d[1])-legendbar(d[0]);})
+      .attr("height",10);
+
+      g2.selectAll(".rect")
+    .data(legend3.range().map(function(d) {
+      d = legend3.invertExtent(d);
+      if (d[0] == null) d[0] = legendbar.domain()[0];
+      if (d[1] == null) d[1] = legendbar.domain()[1];
+      return d;
+    }))
+  .enter().append("rect")
+  .attr("id","r_legend")
+      .attr("fill",function(d){return legend3(d[0]);})
+      .attr("x",function(d){ return legendbar(d[0]);})
+      .attr("y",5)
+      .attr("width",function(d){return legendbar(d[1])-legendbar(d[0]);})
+      .attr("height",10);
+
+      g2.selectAll(".rect")
+    .data(legend4.range().map(function(d) {
+      d = legend4.invertExtent(d);
+      if (d[0] == null) d[0] = legendbar.domain()[0];
+      if (d[1] == null) d[1] = legendbar.domain()[1];
+      return d;
+    }))
+  .enter().append("rect")
+      .attr("fill",function(d){return legend4(d[0]);})
+      .attr("x",function(d){ return legendbar(d[0]);})
+      .attr("y",5)
+      .attr("width",function(d){return legendbar(d[1])-legendbar(d[0]);})
+      .attr("height",10);
 
   svg2.append("g")
       .append("rect")
       .attr("fill",c)
-      .attr("x",50)
+      .attr("x",30)
       .attr("y",y3)
       .attr("width",20)
       .attr("height",10);
@@ -365,7 +436,7 @@ d3.queue()
   svg2.append("g")
       .append("rect")
       .attr("fill",cr)
-      .attr("x",200)
+      .attr("x",170)
       .attr("y",y3)
       .attr("width",20)
       .attr("height",10);
@@ -373,7 +444,7 @@ d3.queue()
   svg2.append("g")
       .append("rect")
       .attr("fill",r)
-      .attr("x",350)
+      .attr("x",300)
       .attr("y",y3)
       .attr("width",20)
       .attr("height",10);
@@ -381,31 +452,43 @@ d3.queue()
   svg2.append("text")
       .attr("class","lable")
       .text("Commercial Parcels")
-      .attr("x",75)
+      .attr("x",55)
       .attr("y",y3+10);
 
   svg2.append("text")
       .attr("class","lable")
       .text("Mixeduse Parcels")
-      .attr("x",225)
+      .attr("x",195)
       .attr("y",y3+10);
 
   svg2.append("text")
       .attr("class","lable")
       .text("Residential Parcels")
-      .attr("x",375)
+      .attr("x",325)
       .attr("y",y3+10);
+
+  svg2.append("text")
+    .attr("class","lable")
+    .text("Low")
+    .attr("x",400)
+    .attr("y",30);
+
+  svg2.append("text")
+    .attr("class","lable")
+    .text("High")
+    .attr("x",475)
+    .attr("y",30); 
 
   g2.append("g")
       .attr("class", "map")
       .selectAll("path")
-      .data(lucomparison.features)
+      .data(luall.features)
     .enter().append("path")
       .attr("fill","black")
       .attr("d", path);
 
   g2.append("path")
-        .datum(lucomparison, lucomparison.geometry, function(a, b) { return a !== b; })
+        .datum(luall, luall.geometry, function(a, b) { return a !== b; })
         .attr("id", "district-borders")
         .attr("d", path);
 
@@ -413,25 +496,28 @@ d3.queue()
       .attr("class", "map")
       .attr("id","c_density")
     .selectAll("path")
-      .data(lucomparison.features)
+      .data(luall.features)
     .enter().append("path")
-      .attr("fill",function(d){return mapcolors(d.properties.tw_c_acre);})
+      .attr("fill",function(d){console.log(d); return mapcolors(d.properties.tw_c_acre);})
       .attr("d", path);
+
 
   g2.append("g")
       .attr("class", "map")
       .attr("id","c_emoji")
     .selectAll("path")
-      .data(lucomparison.features)
+      .data(luall.features)
     .enter().append("path")
       .attr("fill",function(d){console.log(d); return mapcolors1(d.properties.MEAN_ave_1);})
       .attr("d", path);
+
+  
 
   g2.append("g")
       .attr("class", "map")
       .attr("id","cr_density")
     .selectAll("path")
-      .data(lucomparison.features)
+      .data(luall.features)
     .enter().append("path")
       .attr("fill",function(d){return mapcolors2(d.properties.tw_cr_area);})
       .attr("d", path); 
@@ -440,7 +526,7 @@ d3.queue()
       .attr("class", "map")
       .attr("id","cr_emoji")
     .selectAll("path")
-      .data(lucomparison.features)
+      .data(luall.features)
     .enter().append("path")
       .attr("fill",function(d){return mapcolors3(d.properties.MEAN_ave_2);})
       .attr("d", path); 
@@ -449,7 +535,7 @@ d3.queue()
       .attr("class", "map")
       .attr("id","r_density")
     .selectAll("path")
-      .data(lucomparison.features)
+      .data(luall.features)
     .enter().append("path")
       .attr("fill",function(d){return mapcolors4(d.properties.tw_r_acre);})
       .attr("d", path);
@@ -458,7 +544,7 @@ d3.queue()
       .attr("class", "map")
       .attr("id","r_emoji")
     .selectAll("path")
-      .data(lucomparison.features)
+      .data(luall.features)
     .enter().append("path")
       .attr("fill",function(d){return mapcolors5(d.properties.MEAN_avera);})
       .attr("d", path)
@@ -467,9 +553,9 @@ d3.queue()
     g2.append("g")
       .attr("class", "map")
       .selectAll("path")
-      .data(lucomparison.features)
+      .data(luall.features)
     .enter().append("path")
-      .attr("fill","black")
+      .attr("fill",function(d){return mapcolors6(d.properties.agg);})
       .attr("d", path)
       .on("mouseover",function(d){
         return tooltip.style("visibility", "visible").text(d.properties.DIST_NAME);
@@ -482,8 +568,23 @@ d3.queue()
       });
 
   g2.append("path")
-        .datum(lucomparison, lucomparison.geometry, function(a, b) { return a !== b; })
+        .datum(luall, luall.geometry, function(a, b) { return a !== b; })
         .attr("id", "district-borders")
         .attr("d", path);
+
+  svg2.append("g")
+      .attr("id", "mask")
+      .append("rect")
+      .attr("fill","white")
+      .attr('x',150)
+      .attr('y',0)
+      .attr('width',240)
+      .attr('height',20)
+
+  g2.append("text")
+      .attr("class","lable")
+      .text("Tweets Activity and Sentiment Level Aggregated")
+      .attr("x",150)
+      .attr("y",18);
 };
 
