@@ -498,7 +498,16 @@ d3.queue()
       .data(luall.features)
     .enter().append("path")
       .attr("fill",function(d){console.log(d); return mapcolors(d.properties.tw_c_acre);})
-      .attr("d", path);
+      .attr("d", path)
+      .on("mouseover",function(d){
+        return tooltip.style("visibility", "visible").text(d.properties.DIST_NAME);
+      })
+      .on("mousemove", function(d){
+        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(d.properties.DIST_NAME +"<br/>"+"Activity Level in Commercial Area: " + d3.format(".2") (d.properties.tw_c_acre)+" tweets/acre" +"<br/>"+"Activity Level in Mixeduse Area: "+d3.format(".2")(d.properties.tw_cr_area)+" tweets/acre"+"<br/>"+"Activity Level in Residential Area: "+d3.format(".2")(d.properties.tw_r_acre)+" tweets/acre"+"<br/>"+"Sentiment Level in Commercial Area: "+d3.format(".2")(d.properties.MEAN_ave_1)+" (0-1)"+"<br/>"+"Sentiment Level in Mixeduse Area: "+d3.format(".2")(d.properties.MEAN_ave_2)+" (0-1)"+"<br/>"+"Sentiment Level in Residential Area: "+d3.format(".2")(d.properties.MEAN_avera)+" (0-1)");
+      })
+      .on("mouseout", function(d){
+        return tooltip.style("visibility", "hidden");
+      });
 
 
   g2.append("g")
@@ -508,7 +517,16 @@ d3.queue()
       .data(luall.features)
     .enter().append("path")
       .attr("fill",function(d){console.log(d); return mapcolors1(d.properties.MEAN_ave_1);})
-      .attr("d", path);
+      .attr("d", path)
+      .on("mouseover",function(d){
+        return tooltip.style("visibility", "visible").text(d.properties.DIST_NAME);
+      })
+      .on("mousemove", function(d){
+        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(d.properties.DIST_NAME +"<br/>"+"Activity Level in Commercial Area: " + d3.format(".2") (d.properties.tw_c_acre)+" tweets/acre" +"<br/>"+"Activity Level in Mixeduse Area: "+d3.format(".2")(d.properties.tw_cr_area)+" tweets/acre"+"<br/>"+"Activity Level in Residential Area: "+d3.format(".2")(d.properties.tw_r_acre)+" tweets/acre"+"<br/>"+"Sentiment Level in Commercial Area: "+d3.format(".2")(d.properties.MEAN_ave_1)+" (0-1)"+"<br/>"+"Sentiment Level in Mixeduse Area: "+d3.format(".2")(d.properties.MEAN_ave_2)+" (0-1)"+"<br/>"+"Sentiment Level in Residential Area: "+d3.format(".2")(d.properties.MEAN_avera)+" (0-1)");
+      })
+      .on("mouseout", function(d){
+        return tooltip.style("visibility", "hidden");
+      });
 
   
 
@@ -519,7 +537,16 @@ d3.queue()
       .data(luall.features)
     .enter().append("path")
       .attr("fill",function(d){return mapcolors2(d.properties.tw_cr_area);})
-      .attr("d", path); 
+      .attr("d", path)
+      .on("mouseover",function(d){
+        return tooltip.style("visibility", "visible").text(d.properties.DIST_NAME);
+      })
+      .on("mousemove", function(d){
+        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(d.properties.DIST_NAME +"<br/>"+"Activity Level in Commercial Area: " + d3.format(".2") (d.properties.tw_c_acre)+" tweets/acre" +"<br/>"+"Activity Level in Mixeduse Area: "+d3.format(".2")(d.properties.tw_cr_area)+" tweets/acre"+"<br/>"+"Activity Level in Residential Area: "+d3.format(".2")(d.properties.tw_r_acre)+" tweets/acre"+"<br/>"+"Sentiment Level in Commercial Area: "+d3.format(".2")(d.properties.MEAN_ave_1)+" (0-1)"+"<br/>"+"Sentiment Level in Mixeduse Area: "+d3.format(".2")(d.properties.MEAN_ave_2)+" (0-1)"+"<br/>"+"Sentiment Level in Residential Area: "+d3.format(".2")(d.properties.MEAN_avera)+" (0-1)");
+      })
+      .on("mouseout", function(d){
+        return tooltip.style("visibility", "hidden");
+      }); 
 
   g2.append("g")
       .attr("class", "map")
@@ -528,7 +555,16 @@ d3.queue()
       .data(luall.features)
     .enter().append("path")
       .attr("fill",function(d){return mapcolors3(d.properties.MEAN_ave_2);})
-      .attr("d", path); 
+      .attr("d", path)
+      .on("mouseover",function(d){
+        return tooltip.style("visibility", "visible").text(d.properties.DIST_NAME);
+      })
+      .on("mousemove", function(d){
+        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(d.properties.DIST_NAME +"<br/>"+"Activity Level in Commercial Area: " + d3.format(".2") (d.properties.tw_c_acre)+" tweets/acre" +"<br/>"+"Activity Level in Mixeduse Area: "+d3.format(".2")(d.properties.tw_cr_area)+" tweets/acre"+"<br/>"+"Activity Level in Residential Area: "+d3.format(".2")(d.properties.tw_r_acre)+" tweets/acre"+"<br/>"+"Sentiment Level in Commercial Area: "+d3.format(".2")(d.properties.MEAN_ave_1)+" (0-1)"+"<br/>"+"Sentiment Level in Mixeduse Area: "+d3.format(".2")(d.properties.MEAN_ave_2)+" (0-1)"+"<br/>"+"Sentiment Level in Residential Area: "+d3.format(".2")(d.properties.MEAN_avera)+" (0-1)");
+      })
+      .on("mouseout", function(d){
+        return tooltip.style("visibility", "hidden");
+      }); 
 
   g2.append("g")
       .attr("class", "map")
@@ -537,7 +573,16 @@ d3.queue()
       .data(luall.features)
     .enter().append("path")
       .attr("fill",function(d){return mapcolors4(d.properties.tw_r_acre);})
-      .attr("d", path);
+      .attr("d", path)
+      .on("mouseover",function(d){
+        return tooltip.style("visibility", "visible").text(d.properties.DIST_NAME);
+      })
+      .on("mousemove", function(d){
+        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(d.properties.DIST_NAME +"<br/>"+"Activity Level in Commercial Area: " + d3.format(".2") (d.properties.tw_c_acre)+" tweets/acre" +"<br/>"+"Activity Level in Mixeduse Area: "+d3.format(".2")(d.properties.tw_cr_area)+" tweets/acre"+"<br/>"+"Activity Level in Residential Area: "+d3.format(".2")(d.properties.tw_r_acre)+" tweets/acre"+"<br/>"+"Sentiment Level in Commercial Area: "+d3.format(".2")(d.properties.MEAN_ave_1)+" (0-1)"+"<br/>"+"Sentiment Level in Mixeduse Area: "+d3.format(".2")(d.properties.MEAN_ave_2)+" (0-1)"+"<br/>"+"Sentiment Level in Residential Area: "+d3.format(".2")(d.properties.MEAN_avera)+" (0-1)");
+      })
+      .on("mouseout", function(d){
+        return tooltip.style("visibility", "hidden");
+      });
 
   g2.append("g")
       .attr("class", "map")
@@ -547,7 +592,16 @@ d3.queue()
     .enter().append("path")
       .attr("fill",function(d){return mapcolors5(d.properties.MEAN_avera);})
       .attr("d", path)
-      .classed("active",false);
+      .classed("active",false)
+      .on("mouseover",function(d){
+        return tooltip.style("visibility", "visible").text(d.properties.DIST_NAME);
+      })
+      .on("mousemove", function(d){
+        return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(d.properties.DIST_NAME +"<br/>"+"Activity Level in Commercial Area: " + d3.format(".2") (d.properties.tw_c_acre)+" tweets/acre" +"<br/>"+"Activity Level in Mixeduse Area: "+d3.format(".2")(d.properties.tw_cr_area)+" tweets/acre"+"<br/>"+"Activity Level in Residential Area: "+d3.format(".2")(d.properties.tw_r_acre)+" tweets/acre"+"<br/>"+"Sentiment Level in Commercial Area: "+d3.format(".2")(d.properties.MEAN_ave_1)+" (0-1)"+"<br/>"+"Sentiment Level in Mixeduse Area: "+d3.format(".2")(d.properties.MEAN_ave_2)+" (0-1)"+"<br/>"+"Sentiment Level in Residential Area: "+d3.format(".2")(d.properties.MEAN_avera)+" (0-1)");
+      })
+      .on("mouseout", function(d){
+        return tooltip.style("visibility", "hidden");
+      });
 
     g2.append("g")
       .attr("class", "map")

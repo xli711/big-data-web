@@ -428,7 +428,16 @@ d3.queue()
       .data(r_lihtc_1.features)
     .enter().append("path")
       .attr("fill",function(d){return xmapcolors(d.properties.tw_density);})
-      .attr("d", xpath);
+      .attr("d", xpath)
+      .on("mouseover",function(d){
+        return xtooltip.style("visibility", "visible").text(d.properties.DIST_NAME);
+      })
+      .on("mousemove", function(d){
+        return xtooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(d.properties.DIST_NAME +"<br/>"+"Activity Level in Normal Residential Developments: " + d3.format(".2") (d.properties.tw_density)+" tweets/1000 residents" +"<br/>"+"Activity Level in LIHTC Developments: "+d3.format(".2")(d.properties.lithc_d)+" tweets/1000 residents"+"<br/>"+"Sentiment Level in Normal Residential Developments: "+d3.format(".2")(d.properties.MEAN_ave_1)+" (0-1)"+"<br/>"+"Sentiment Level in LIHTC Developments: "+d3.format(".2")(d.properties.MEAN_avera)+" (0-1)");
+      })
+      .on("mouseout", function(d){
+        return xtooltip.style("visibility", "hidden");
+      });
 
   xg2.append("g")
       .attr("class", "map")
@@ -437,7 +446,16 @@ d3.queue()
       .data(r_lihtc_1.features)
     .enter().append("path")
       .attr("fill",function(d){return xmapcolors1(d.properties.MEAN_ave_1);})
-      .attr("d", xpath);
+      .attr("d", xpath)
+      .on("mouseover",function(d){
+        return xtooltip.style("visibility", "visible").text(d.properties.DIST_NAME);
+      })
+      .on("mousemove", function(d){
+        return xtooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(d.properties.DIST_NAME +"<br/>"+"Activity Level in Normal Residential Developments: " + d3.format(".2") (d.properties.tw_density)+" tweets/1000 residents" +"<br/>"+"Activity Level in LIHTC Developments: "+d3.format(".2")(d.properties.lithc_d)+" tweets/1000 residents"+"<br/>"+"Sentiment Level in Normal Residential Developments: "+d3.format(".2")(d.properties.MEAN_ave_1)+" (0-1)"+"<br/>"+"Sentiment Level in LIHTC Developments: "+d3.format(".2")(d.properties.MEAN_avera)+" (0-1)");
+      })
+      .on("mouseout", function(d){
+        return xtooltip.style("visibility", "hidden");
+      });
 
   xg2.append("g")
       .attr("class", "map")
@@ -446,7 +464,16 @@ d3.queue()
       .data(r_lihtc_1.features)
     .enter().append("path")
       .attr("fill",function(d){return xmapcolors2(d.properties.lithc_d);})
-      .attr("d", xpath); 
+      .attr("d", xpath)
+      .on("mouseover",function(d){
+        return xtooltip.style("visibility", "visible").text(d.properties.DIST_NAME);
+      })
+      .on("mousemove", function(d){
+        return xtooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(d.properties.DIST_NAME +"<br/>"+"Activity Level in Normal Residential Developments: " + d3.format(".2") (d.properties.tw_density)+" tweets/1000 residents" +"<br/>"+"Activity Level in LIHTC Developments: "+d3.format(".2")(d.properties.lithc_d)+" tweets/1000 residents"+"<br/>"+"Sentiment Level in Normal Residential Developments: "+d3.format(".2")(d.properties.MEAN_ave_1)+" (0-1)"+"<br/>"+"Sentiment Level in LIHTC Developments: "+d3.format(".2")(d.properties.MEAN_avera)+" (0-1)");
+      })
+      .on("mouseout", function(d){
+        return xtooltip.style("visibility", "hidden");
+      }); 
 
   xg2.append("g")
       .attr("class", "map")
@@ -455,7 +482,16 @@ d3.queue()
       .data(r_lihtc_1.features)
     .enter().append("path")
       .attr("fill",function(d){return xmapcolors3(d.properties.MEAN_avera);})
-      .attr("d", xpath); 
+      .attr("d", xpath)
+      .on("mouseover",function(d){
+        return xtooltip.style("visibility", "visible").text(d.properties.DIST_NAME);
+      })
+      .on("mousemove", function(d){
+        return xtooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").html(d.properties.DIST_NAME +"<br/>"+"Activity Level in Normal Residential Developments: " + d3.format(".2") (d.properties.tw_density)+" tweets/1000 residents" +"<br/>"+"Activity Level in LIHTC Developments: "+d3.format(".2")(d.properties.lithc_d)+" tweets/1000 residents"+"<br/>"+"Sentiment Level in Normal Residential Developments: "+d3.format(".2")(d.properties.MEAN_ave_1)+" (0-1)"+"<br/>"+"Sentiment Level in LIHTC Developments: "+d3.format(".2")(d.properties.MEAN_avera)+" (0-1)");
+      })
+      .on("mouseout", function(d){
+        return xtooltip.style("visibility", "hidden");
+      }); 
 
     xg2.append("g")
       .attr("class", "map")
